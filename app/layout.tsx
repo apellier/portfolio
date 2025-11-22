@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import NoiseOverlay from '@/src/components/NoiseOverlay';
 import './globals.css';
@@ -18,7 +18,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Portfolio | Creative Technologist',
   description: 'A portfolio website featuring a soft neo-brutalist design system with bento-grid layout, grain texture, and tactile interactions.',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({

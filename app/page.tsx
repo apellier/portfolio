@@ -72,12 +72,9 @@ export default function Home() {
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.9] tracking-tight mb-8">
               PRODUCT <br />
               <motion.span 
-                className="text-outline-charcoal cursor-pointer inline-block"
+                className="text-outline-charcoal cursor-pointer inline-block hover:text-accent"
                 whileHover={{ 
-                  color: "#2952FF",
-                  textStroke: "2px #2952FF",
-                  WebkitTextStroke: "2px #2952FF",
-                  WebkitTextFillColor: "#2952FF"
+                  scale: 1.02
                 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
