@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowDown, Mail, Github, Linkedin } from 'lucide-react';
 import ProjectCard from '@/src/components/ProjectCard';
@@ -11,9 +11,15 @@ import { PROJECTS, METHODOLOGY } from '@/src/constants';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    // Detect touch device
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col relative z-10 font-sans selection:bg-accent selection:text-white cursor-none">
+    <div className={`min-h-screen flex flex-col relative z-10 font-sans selection:bg-accent selection:text-white ${isTouchDevice ? '' : 'cursor-none md:cursor-none'}`}>
       <CustomCursor />
       
       {/* Navigation */}
@@ -148,21 +154,33 @@ export default function Home() {
               <div className="flex gap-4">
                  <motion.a 
                     href="#" 
-                    whileHover={{ y: -2, backgroundColor: "#2952FF", color: "#fff", borderColor: "#2952FF" }}
+                    {...(isTouchDevice ? {
+                      whileTap: { scale: 0.98, backgroundColor: "#2952FF", color: "#fff", borderColor: "#2952FF" }
+                    } : {
+                      whileHover: { y: -2, backgroundColor: "#2952FF", color: "#fff", borderColor: "#2952FF" }
+                    })}
                     className="flex items-center gap-2 px-6 py-3 border border-charcoal font-mono text-sm uppercase transition-colors cursor-pointer"
                   >
                     <Mail size={16} /> Email Me
                  </motion.a>
                  <motion.a 
                     href="#" 
-                    whileHover={{ y: -2, backgroundColor: "#1A1A1A", color: "#fff" }}
+                    {...(isTouchDevice ? {
+                      whileTap: { scale: 0.98, backgroundColor: "#1A1A1A", color: "#fff" }
+                    } : {
+                      whileHover: { y: -2, backgroundColor: "#1A1A1A", color: "#fff" }
+                    })}
                     className="flex items-center gap-2 px-6 py-3 border border-charcoal font-mono text-sm uppercase transition-colors cursor-pointer"
                   >
                     <Github size={16} /> Github
                  </motion.a>
                  <motion.a 
                     href="#" 
-                    whileHover={{ y: -2, backgroundColor: "#0077b5", color: "#fff", borderColor: "#0077b5" }}
+                    {...(isTouchDevice ? {
+                      whileTap: { scale: 0.98, backgroundColor: "#0077b5", color: "#fff", borderColor: "#0077b5" }
+                    } : {
+                      whileHover: { y: -2, backgroundColor: "#0077b5", color: "#fff", borderColor: "#0077b5" }
+                    })}
                     className="flex items-center gap-2 px-6 py-3 border border-charcoal font-mono text-sm uppercase transition-colors cursor-pointer"
                   >
                     <Linkedin size={16} /> LinkedIn
