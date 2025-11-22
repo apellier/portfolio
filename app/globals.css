@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Reset & Base Styles */
+body {
+  background-color: #FDFBF7;
+  color: #1A1A1A;
+  overflow-x: hidden;
+  /* Hide default cursor to allow custom cursor to take over */
+  cursor: none;
+}
+
+/* Ensure interactive elements also hide the cursor */
+a, button, input, textarea, .cursor-pointer {
+  cursor: none !important;
+}
+
+/* Noise Texture Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url('/noise.png');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Text outline utility for hero */
+.text-outline-charcoal {
+  -webkit-text-stroke: 2px #1A1A1A;
+  -webkit-text-fill-color: transparent;
+}
